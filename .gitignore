@@ -1,0 +1,12 @@
+# Ignore Vim backup files
+*.swp
+*.swo
+*.swn
+*.swm
+*.swl
+*.swo
+*.swn
+*~
+._*
+
+

@@ -32,7 +32,7 @@ module vertical_counter(
 	 begin
 	 if(enable_V_counter==1'b1)
 		 begin
-			if(V_count_Value < 525)
+			if(V_count_Value < 524)
 				V_count_Value <= V_count_Value+1;
 		 
 			else

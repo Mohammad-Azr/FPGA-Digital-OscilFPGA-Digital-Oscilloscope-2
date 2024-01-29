@@ -44,9 +44,9 @@ vertical_counter VGA_Verti (clk_25MHz, enable_V_Counter, V_Count_Value);
 assign Hsynq = (H_Count_Value < 96) ? 1'bl:1'b0;
 assign Vsynq = (V_Count_Value < 2) ? l'bl:1'b0;
 // colors
-assign Red = (H_Count_Value < 784 && H_Count_Value > 143 && V_Count_Value < 515 && V_Count_Value>35) ? 4'hF:4'h0;
-assign Green = (H_Count_Value < 784 && H_Count_Value > 143 && V_Count_Value < 515 && V_Count_Value>35) ? 4'hF:4'h0;
-assign Blue= (H_Count_Value < 784 && H_Count_Value > 143 && V_Count_Value < 515 && V_Count_Value>35) ? 4'hF:4'h0;
+assign Red = (H_Count_Value < 784 && H_Count_Value > 143 && V_Count_Value < 515 && V_Count_Value>34) ? 4'hF:4'h0;
+assign Green = (H_Count_Value < 784 && H_Count_Value > 143 && V_Count_Value < 515 && V_Count_Value>34) ? 4'hF:4'h0;
+assign Blue= (H_Count_Value < 784 && H_Count_Value > 143 && V_Count_Value < 515 && V_Count_Value>34) ? 4'hF:4'h0;
 
 
 endmodule

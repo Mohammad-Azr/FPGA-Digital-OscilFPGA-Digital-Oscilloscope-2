@@ -30,7 +30,7 @@ module horizontal_counter(
 	always @(posedge clk_25MHz)
 	begin
 		
-		if(H_count_Value <800)
+		if(H_count_Value <799)
 		begin
 			H_counter_Value <= H_counter_Value+1;
 			enable_V_counter <= 0;

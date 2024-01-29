@@ -35,7 +35,7 @@ module mode_switcher(
 	always @(posedge clk)
 	begin
 		
-		dipswitch_reg <= dipswitch
+		dipswitch_reg <= dipswitch;
 	
 	end
 	

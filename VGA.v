@@ -32,10 +32,9 @@ module VGA(
 		output Hsynq,
 		output Vsynq,
 		
-		output reg [3:0] Red_out,
-		output reg [3:0] Green_out,
-		output reg [3:0] Blue_out
-	
+		output reg [3:0] Red,
+		output reg [3:0] Green,
+		output reg [3:0] Blue
 
     );
 	 
@@ -44,14 +43,12 @@ wire enable_V_Counter;
 wire [15:0] H_Count_Value;
 wire [15:0] V_Count_Value;
 
-reg [3:0] Red;
-reg [3:0] Green;
-reg [3:0] Blue;
 
 reg [15:0] x_init_counter=0;
 reg [15:0] y_init_counter=0;
 
 reg start_update=0;
+reg update_col_counter=0;
 
 
 horizontal_counter VGA_Horiz (clk_25MHz, enable_V_Counter, H_Count_Value);
@@ -74,10 +71,10 @@ assign Vsynq = (V_Count_Value < 2) ? 1'b1:1'b0;
 always @(posedge clk_25MHz)
 begin
 	if(H_Count_Value < 784 && H_Count_Value > 143 && V_Count_Value < 515 && V_Count_Value>34)
-	begin		
-		Red_out <= frame[V_Count_Value-35][H_Count_Value-144][11:8];
-		Green_out <= frame[V_Count_Value-35][H_Count_Value-144][7:4];
-		Blue_out <= frame[V_Count_Value-35][H_Count_Value-144][3:0];
+	begin	
+		Red <= frame[V_Count_Value-35][H_Count_Value-144][11:8];
+		Green <= frame[V_Count_Value-35][H_Count_Value-144][7:4];
+		Blue <= frame[V_Count_Value-35][H_Count_Value-144][3:0];
 	end
 	else
 	begin 
@@ -110,6 +107,15 @@ begin
 
 end
 
+always @(posedge clk_25MHz)
+begin
+		
+		if(update_col_counter<641)
+			update_col_counter<=update_col_counter+1;
+		else
+			update_col_counter<=0;
+
+end
 
 
 

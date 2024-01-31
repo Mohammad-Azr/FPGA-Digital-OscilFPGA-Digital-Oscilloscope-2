@@ -23,7 +23,7 @@ module VGA(
 		input clk,
 		input clk_25MHz,
 		
-		input [2:0] signal_data,
+		input [7:0] signal_data,
 		
 		input [2:0] FFT_data,
 		

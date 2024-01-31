@@ -56,9 +56,9 @@ vertical_counter VGA_Verti (clk_25MHz, enable_V_Counter, V_Count_Value);
 
 
 //frame
-reg [11:0] frame [480][640];
+reg [11:0] frame [479:0][639:0];
 
-
+reg [11:0] new_col_data [479:0];
 
 
 // outputs
@@ -88,23 +88,34 @@ end
 always @(posedge clk_25MHz)
 begin
 
-	if(start_update!=1)
-	begin
-		if(x_init_counter<481 && y_init_counter<641)
-			frame[x_init_counter][y_init_counter] <= 0;
-		else
-			start_update<=1;
-	end
+		
 	
-	else
-	begin
-		for(i=0;i<481;i=i+1)
+		// initialize the monitor at first to all black
+		if(start_update!=1)
 		begin
-			frame[i][update_col_counter] <= new_col_data[i];
+			if(x_init_counter<481 && y_init_counter<641)
+				frame[x_init_counter][y_init_counter] <= 0;
+			else
+				start_update<=1;
 		end
+		
+		//update the new_col_data
+		else
+		begin
+			//update the column when you reach the blank area
+			if(V_Count_Value>=515)
+			begin
 	
-	end
-
+				for(i=0;i<481;i=i+1)
+				begin
+					frame[i][update_col_counter] <= new_col_data[i];
+				end
+			end
+			else
+			begin
+				frame[i][update_col_counter]<=frame[i][update_col_counter];
+			end
+		end
 end
 
 always @(posedge clk_25MHz)

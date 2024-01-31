@@ -136,12 +136,12 @@ always @(posedge clk_25MHz)
 begin
     if(mode==0 || mode==2)
       begin	
-			 // 5 volt
+		  // ------------------------------ 5 volt ------------------------------
           if(signal_data[7:4] == 5)                  
           begin
             if(signal_data[3:0] <= 3 )                               // 0 ~ 0.3
             begin
-					for(i=0 ; i < 240; i = i+1)
+					for(i=0 ; i < 235; i = i+1)
 						begin
 							if( i >= 26 && i < 39)
 								new_col_data[i] <= 12'b000000010000;
@@ -151,7 +151,7 @@ begin
             end
             else if(signal_data[3:0] > 3 && signal_data[3:0] <= 6 )  // 0.3 ~ 0.6
             begin
-					for(i=0 ; i < 240; i = i+1)
+					for(i=0 ; i < 235; i = i+1)
 						begin
 							if( i >= 13 && i < 26)
 								new_col_data[i] <= 12'b000000010000;
@@ -161,7 +161,7 @@ begin
             end
             else                                                     // 0.6 ~ 1
             begin
-					for(i=0 ; i < 240; i = i+1)
+					for(i=0 ; i < 235; i = i+1)
 						begin
 							if( i >= 0 && i < 13)
 								new_col_data[i] <= 12'b000000010000;
@@ -171,12 +171,12 @@ begin
             end
           end
           
-			 // 4 volt
+		  // ------------------------------ 4 volt ------------------------------
           else if(signal_data[7:4] == 4)             
           begin
             if(signal_data[3:0] <= 3 )                               // 0 ~ 0.3
             begin
-					for(i=0 ; i < 240; i = i+1)
+					for(i=0 ; i < 235; i = i+1)
 						begin
 							if( i >= 65 && i < 78)
 								new_col_data[i] <= 12'b000000010000;
@@ -186,7 +186,7 @@ begin
             end
             else if(signal_data[3:0] > 3 && signal_data[3:0] <= 6 )  // 0.3 ~ 0.6
             begin
-					for(i=0 ; i < 240; i = i+1)
+					for(i=0 ; i < 235; i = i+1)
 						begin
 							if( i >= 52 && i < 65)
 								new_col_data[i] <= 12'b000000010000;
@@ -196,7 +196,7 @@ begin
             end
             else                                                     // 0.6 ~ 1
             begin
-					for(i=0 ; i < 240; i = i+1)
+					for(i=0 ; i < 235; i = i+1)
 						begin
 							if( i >= 39 && i < 52)
 								new_col_data[i] <= 12'b000000010000;
@@ -206,12 +206,12 @@ begin
             end
           end
           
-			 // 3 volt
+		  // ------------------------------ 3 volt ------------------------------
           else if(signal_data[7:4] == 3)             
           begin
             if(signal_data[3:0] <= 3 )                               // 0 ~ 0.3
             begin
-					for(i=0 ; i < 240; i = i+1)
+					for(i=0 ; i < 235; i = i+1)
 						begin
 							if( i >= 104 && i < 117)
 								new_col_data[i] <= 12'b000000010000;
@@ -221,7 +221,7 @@ begin
 				end
             else if(signal_data[3:0] > 3 && signal_data[3:0] <= 6 )  // 0.3 ~ 0.6
             begin
-					for(i=0 ; i < 240; i = i+1)
+					for(i=0 ; i < 235; i = i+1)
 						begin
 							if( i >=91 && i < 104)
 								new_col_data[i] <= 12'b000000010000;
@@ -231,7 +231,7 @@ begin
 			end
             else                                                     // 0.6 ~ 1
             begin
-					for(i=0 ; i < 240; i = i+1)
+					for(i=0 ; i < 235; i = i+1)
 						begin
 							if( i >= 78 && i < 91)
 								new_col_data[i] <= 12'b000000010000;
@@ -240,12 +240,13 @@ begin
 						end
 				end
           end
-			 // 2 volt
+
+		// ------------------------------ 2 volt ------------------------------
           else if(signal_data[7:4] == 2)             
           begin
             if(signal_data[3:0] <= 3 )                               // 0 ~ 0.3
             begin
-					for(i=0 ; i < 240; i = i+1)
+					for(i=0 ; i < 235; i = i+1)
 						begin
 							if( i >= 143 && i < 156)
 								new_col_data[i] <= 12'b000000010000;
@@ -255,7 +256,7 @@ begin
             end
             else if(signal_data[3:0] > 3 && signal_data[3:0] <= 6 )  // 0.3 ~ 0.6
             begin
-					for(i=0 ; i < 240; i = i+1)
+					for(i=0 ; i < 235; i = i+1)
 						begin
 							if( i >= 130 && i < 143)
 								new_col_data[i] <= 12'b000000010000;
@@ -265,7 +266,7 @@ begin
             end
             else                                                     // 0.6 ~ 1
             begin
-					for(i=0 ; i < 240; i = i+1)
+					for(i=0 ; i < 235; i = i+1)
 						begin
 							if( i >= 117 && i < 130)
 								new_col_data[i] <= 12'b000000010000;
@@ -275,12 +276,12 @@ begin
             end
           end
           
-			 // 1 volt
+		  // ------------------------------ 1 volt ------------------------------
           else if(signal_data[7:4] == 1)             
           begin
             if(signal_data[3:0] <= 3 )                               // 0 ~ 0.3
             begin
-					for(i=0 ; i < 240; i = i+1)
+					for(i=0 ; i < 235; i = i+1)
 						begin
 							if( i >= 182 && i < 195)
 								new_col_data[i] <= 12'b000000010000;
@@ -290,7 +291,7 @@ begin
             end
             else if(signal_data[3:0] > 3 && signal_data[3:0] <= 6 )  // 0.3 ~ 0.6
             begin
-					for(i=0 ; i < 240; i = i+1)
+					for(i=0 ; i < 235; i = i+1)
 						begin
 							if( i >= 169 && i < 182)
 								new_col_data[i] <= 12'b000000010000;
@@ -300,7 +301,7 @@ begin
             end
             else                                                     // 0.6 ~ 1
             begin
-					for(i=0 ; i < 240; i = i+1)
+					for(i=0 ; i < 235; i = i+1)
 						begin
 							if( i >= 156 && i < 169)
 								new_col_data[i] <= 12'b000000010000;
@@ -310,12 +311,12 @@ begin
             end
           end
           
-			 // 0 volt
+		  // ------------------------------ 0 volt ------------------------------
           else                                         
           begin
             if(signal_data[3:0] <= 3 )                               // 0 ~ 0.3
             begin
-					for(i=0 ; i < 240; i = i+1)
+					for(i=0 ; i < 235; i = i+1)
 						begin
 							if( i >= 195 && i < 208)
 								new_col_data[i] <= 12'b000000010000;
@@ -325,7 +326,7 @@ begin
             end
             else if(signal_data[3:0] > 3 && signal_data[3:0] <= 6 )  // 0.3 ~ 0.6
             begin
-					for(i=0 ; i < 240; i = i+1)
+					for(i=0 ; i < 235; i = i+1)
 						begin
 							if( i >= 208 && i < 221)
 								new_col_data[i] <= 12'b000000010000;
@@ -335,16 +336,25 @@ begin
 				end
             else                                                     // 0.6 ~ 1
             begin
-            for(i=0 ; i < 240; i = i+1)
-					begin
-						if( i >= 221 && i < 234)
-							new_col_data[i] <= 12'b000000010000;
-						else
-							new_col_data[i] <= 12'b000000000000;
-					end
-				end
+				for(i=0 ; i < 235; i = i+1)
+						begin
+							if( i >= 221 && i <= 234)
+								new_col_data[i] <= 12'b000000010000;
+							else
+								new_col_data[i] <= 12'b000000000000;
+						end
+			end
          end
+
+		 // ------------------------- Middle Line -------------------------
+		 new_col_data[235] <= 12'b000000000000;
+		 new_col_data[236] <= 12'b000000000000;
+		 new_col_data[237] <= 12'b000000000000;
+		 new_col_data[238] <= 12'b000000000000;
+		 new_col_data[239] <= 12'b000000000000;
+		 new_col_data[240] <= 12'b000000000000;
 	end
+	
 end
 
 //assign Red = (H_Count_Value < 784 && H_Count_Value > 143 && V_Count_Value < 515 && V_Count_Value>34) ? 4'hF:4'h0;

@@ -60,6 +60,7 @@ reg [11:0] frame [479:0][639:0];
 
 reg [11:0] new_col_data [479:0];
 
+reg [7:0] i;
 
 // outputs
 assign Hsynq = (H_Count_Value < 96) ? 1'b1:1'b0;
@@ -130,10 +131,180 @@ end
 
 
 
+// colors
+always @(posedge clk_25MHz)
+begin
+
+  if(H_Count_Value < 784 && H_Count_Value > 143 && V_Count_Value < 515 && V_Count_Value>34)
+  begin
+    if(V_Count_Value > 268 && V_Count_Value<282)     // middle line of screen 
+    begin
+      Red = 4'h0;
+      Green = 4'hF;
+      Blue = 4'h0;
+    end
+  end
+    
+    else if(V_Count_Value < 269 && V_Count_Value>35) // top of screen
+    begin
+      if(mode==0 || mode==2)
+      begin	
+          if(signal_data[7:4] == 5)                  // 5 volt
+          begin
+            if(signal_data[3:0] <= 3 )                               // 0 ~ 0.3
+            begin
+					for(i=61 ; i < 74 ; i = i+1)
+					begin
+						new_col_data[i] <= 12'b000000010000;
+					end
+            end
+            else if(signal_data[3:0] > 3 && signal_data[3:0] <= 6 )  // 0.3 ~ 0.6
+            begin
+					for(i=48 ; i < 61 ; i = i+1)
+					begin
+						new_col_data[i] <= 12'b000000010000;
+					end
+            end
+            else                                                     // 0.6 ~ 1
+            begin
+					for(i=35 ; i < 48 ; i = i+1)
+					begin
+						new_col_data[i] <= 12'b000000010000;
+					end
+            end
+          end
+          
+          else if(signal_data[7:4] == 4)             // 4 volt
+          begin
+            if(signal_data[3:0] <= 3 )                               // 0 ~ 0.3
+            begin
+					for(i=100 ; i < 113 ; i = i+1)
+					begin
+						new_col_data[i] <= 12'b000000010000;
+					end
+            end
+            else if(signal_data[3:0] > 3 && signal_data[3:0] <= 6 )  // 0.3 ~ 0.6
+            begin
+					for(i=87 ; i < 100 ; i = i+1)
+					begin
+						new_col_data[i] <= 12'b000000010000;
+					end
+            end
+            else                                                     // 0.6 ~ 1
+            begin
+					for(i=74 ; i < 87 ; i = i+1)
+					begin
+						new_col_data[i] <= 12'b000000010000;
+					end
+            end
+          end
+          
+          else if(signal_data[7:4] == 3)             // 3 volt
+          begin
+            if(signal_data[3:0] <= 3 )                               // 0 ~ 0.3
+            begin
+            for(i=139 ; i < 152 ; i = i+1)
+					begin
+						new_col_data[i] <= 12'b000000010000;
+					end
+            end
+            else if(signal_data[3:0] > 3 && signal_data[3:0] <= 6 )  // 0.3 ~ 0.6
+            begin
+            for(i=126 ; i < 139 ; i = i+1)
+					begin
+						new_col_data[i] <= 12'b000000010000;
+					end
+            end
+            else                                                     // 0.6 ~ 1
+            begin
+            for(i=113 ; i <126 ; i = i+1)
+					begin
+						new_col_data[i] <= 12'b000000010000;
+					end
+            end
+          end
+          
+          else if(signal_data[7:4] == 2)             // 2 volt
+          begin
+            if(signal_data[3:0] <= 3 )                               // 0 ~ 0.3
+            begin
+            for(i=178 ; i < 191 ; i = i+1)
+					begin
+						new_col_data[i] <= 12'b000000010000;
+					end
+            end
+            else if(signal_data[3:0] > 3 && signal_data[3:0] <= 6 )  // 0.3 ~ 0.6
+            begin
+            for(i=165 ; i < 178 ; i = i+1)
+					begin
+						new_col_data[i] <= 12'b000000010000;
+					end
+            end
+            else                                                     // 0.6 ~ 1
+            begin
+            for(i=152 ; i < 165 ; i = i+1)
+					begin
+						new_col_data[i] <= 12'b000000010000;
+					end
+            end
+          end
+          
+          else if(signal_data[7:4] == 1)             // 1 volt
+          begin
+            if(signal_data[3:0] <= 3 )                               // 0 ~ 0.3
+            begin
+            for(i=217 ; i < 230 ; i = i+1)
+					begin
+						new_col_data[i] <= 12'b000000010000;
+					end
+            end
+            else if(signal_data[3:0] > 3 && signal_data[3:0] <= 6 )  // 0.3 ~ 0.6
+            begin
+            for(i=204 ; i < 217 ; i = i+1)
+					begin
+						new_col_data[i] <= 12'b000000010000;
+					end
+            end
+            else                                                     // 0.6 ~ 1
+            begin
+            for(i=131 ; i < 204 ; i = i+1)
+					begin
+						new_col_data[i] <= 12'b000000010000;
+					end
+            end
+          end
+          
+          else                                         // 0 volt
+          begin
+            if(signal_data[3:0] <= 3 )                               // 0 ~ 0.3
+            begin
+            for(i=256 ; i < 269 ; i = i+1)
+					begin
+						new_col_data[i] <= 12'b000000010000;
+					end
+            end
+            else if(signal_data[3:0] > 3 && signal_data[3:0] <= 6 )  // 0.3 ~ 0.6
+            begin
+            for(i=243 ; i < 256 ; i = i+1)
+					begin
+						new_col_data[i] <= 12'b000000010000;
+					end
+            end
+            else                                                     // 0.6 ~ 1
+            begin
+            for(i=230 ; i < 243 ; i = i+1)
+					begin
+						new_col_data[i] <= 12'b000000010000;
+					end
+            end
+         end
+	end
+	end
+end
+
 //assign Red = (H_Count_Value < 784 && H_Count_Value > 143 && V_Count_Value < 515 && V_Count_Value>34) ? 4'hF:4'h0;
 //assign Green = (H_Count_Value < 784 && H_Count_Value > 143 && V_Count_Value < 515 && V_Count_Value>34) ? 4'hF:4'h0;
 //assign Blue= (H_Count_Value < 784 && H_Count_Value > 143 && V_Count_Value < 515 && V_Count_Value>34) ? 4'hF:4'h0;
 
 
 endmodule
-

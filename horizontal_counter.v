@@ -26,18 +26,18 @@ module horizontal_counter(
 		output reg [15:0] H_count_Value = 0
     );
 
-	
-	always @(posedge clk_25MHz)
+	//h-sync counter
+ 	always @(posedge clk_25MHz)
 	begin
 		
 		if(H_count_Value <799)
 		begin
-			H_counter_Value <= H_counter_Value+1;
+			H_count_Value <= H_count_Value+1;
 			enable_V_counter <= 0;
 		end
 		else
 		begin
-			H_counter_Value <= 0;
+			H_count_Value <= 0;
 			enable_V_counter <= 1;
 		end
 	end

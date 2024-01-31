@@ -22,12 +22,12 @@ module vertical_counter(
 
 		input clk_25MHz,
 		
-		input reg enable_V_counter=0,
+		input  enable_V_counter,
 		output reg [15:0] V_count_Value=0
 
     );
 	 
-	 
+	 //v-sync counter
 	 always @(posedge clk_25MHz)
 	 begin
 	 if(enable_V_counter==1'b1)

@@ -24,8 +24,8 @@ module voltage_calculater(
 	input flag,										// a flag that comes from sseg_displayer to tell the voltage calculater to update its value every 0.5 seconds
 														
 	output reg [3:0] integer_data,			// integer value of ADC to show on the first 7-seg
-	output reg [3:0] float1_data,				// first float number after point to show on the second 7-seg
-	output reg [3:0] float2_data				// second float number after point to show on the third 7-seg
+	output reg [3:0] float1_data				// first float number after point to show on the second 7-seg
+	//output reg [3:0] float2_data				// second float number after point to show on the third 7-seg
     );
 
 	
@@ -45,7 +45,7 @@ module voltage_calculater(
 		  
 		  integer_data = voltage/1000;
 		  float1_data = voltage %1000 / 100;
-		  float2_data = voltage %100 / 10;
+		  //float2_data = voltage %100 / 10;
 		  
 		 // To use less component of the chip use the following three commands instead:
 	  
